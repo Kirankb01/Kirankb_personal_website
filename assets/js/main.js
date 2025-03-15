@@ -226,4 +226,52 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+
+  document.querySelector(".php-email-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    let form = this;
+    let formData = new FormData(form);
+    let errorMessage = document.querySelector(".error-message");
+    let successMessage = document.querySelector(".sent-message");
+
+    fetch(form.action, {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data.trim() === "success") {
+            successMessage.classList.remove("d-none");
+            errorMessage.classList.add("d-none");
+            form.reset();
+        } else {
+            errorMessage.textContent = data;
+            errorMessage.classList.remove("d-none");
+            successMessage.classList.add("d-none");
+        }
+    })
+    .catch(error => console.error("Error:", error));
+});
+  
 })();
