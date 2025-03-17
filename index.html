@@ -34,6 +34,17 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function(){
+        emailjs.init({
+          publicKey: "zokNlz_sDAM2mkBUT",
+        });
+    })();
+  </script>
 </head>
 
 <body class="index-page">
@@ -398,10 +409,9 @@
                 </div>
     
                 <div class="col-md-12 text-center">
-                  <div class="alert alert-danger error-message d-none"></div>
-                  <div class="alert alert-success sent-message d-none">Your message has been sent. Thank you!</div>
-                  <button type="submit" class="btn btn-primary w-50">Send Message</button>
-                   
+                  
+
+                  <button type="submit" onclick="sendMail()">Send Message</button>
                 </div>
 
               </div>
